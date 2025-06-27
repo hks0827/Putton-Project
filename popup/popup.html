@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Button Effects</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1>3D Button Effects</h1>
+      <div class="toggle-container">
+        <label class="toggle-switch">
+          <input type="checkbox" id="main-toggle" checked>
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label">효과 활성화</span>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="style-selection">
+        <h3>스타일 선택</h3>
+        <div class="style-grid">
+          <button class="style-btn active" data-style="auto">
+            <span class="style-icon">🤖</span>
+            <span class="style-name">자동 선택</span>
+          </button>
+          <button class="style-btn" data-style="classic">
+            <span class="style-icon">📦</span>
+            <span class="style-name">클래식</span>
+          </button>
+          <button class="style-btn" data-style="neon">
+            <span class="style-icon">💫</span>
+            <span class="style-name">네온</span>
+          </button>
+          <button class="style-btn" data-style="glass">
+            <span class="style-icon">🔮</span>
+            <span class="style-name">글래스</span>
+          </button>
+          <button class="style-btn" data-style="metallic">
+            <span class="style-icon">⚡</span>
+            <span class="style-name">메탈릭</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="intensity-control">
+        <h3>효과 강도</h3>
+        <div class="intensity-slider">
+          <input type="range" id="intensity" min="1" max="3" value="2" step="1">
+          <div class="intensity-labels">
+            <span>약함</span>
+            <span>보통</span>
+            <span>강함</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="site-controls">
+        <h3>사이트 설정</h3>
+        <button id="exclude-site" class="control-btn">
+          현재 사이트 제외
+        </button>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="stats">
+        <span id="button-count">버튼 0개 발견</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
