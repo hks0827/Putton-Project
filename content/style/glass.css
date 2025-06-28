@@ -1,0 +1,490 @@
+/* glass.css - 글래스모피즘 3D 스타일 */
+
+/* ====================
+   글래스모피즘 3D 효과
+   투명하고 부드러운 유리 같은 느낌
+   ==================== */
+
+.btn-3d-glass {
+    /* 글래스 배경 */
+    background: 
+        linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.05) 100%) !important;
+    
+    /* 백드롭 블러 효과 */
+    backdrop-filter: blur(10px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+    
+    /* 글래스 테두리 */
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    
+    /* 부드러운 그림자 */
+    box-shadow: 
+        /* 메인 그림자 */
+        0 8px 32px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.3)),
+        /* 상단 하이라이트 */
+        0 1px 0 rgba(255, 255, 255, 0.3) inset,
+        /* 하단 어두운 라인 */
+        0 -1px 0 rgba(0, 0, 0, 0.1) inset,
+        /* 외곽 글로우 */
+        0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+    
+    /* 글래스 효과를 위한 오버플로우 숨김 */
+    overflow: hidden !important;
+}
+
+/* 호버 효과 */
+.btn-3d-glass:hover {
+    /* 더 밝은 글래스 효과 */
+    background: 
+        linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0.08) 100%) !important;
+    
+    /* 블러 강화 */
+    backdrop-filter: blur(15px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(15px) saturate(200%) !important;
+    
+    /* 테두리 밝아짐 */
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    
+    /* 그림자 확장 */
+    box-shadow: 
+        /* 확장된 그림자 */
+        0 12px 48px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.4)),
+        /* 강화된 하이라이트 */
+        0 1px 0 rgba(255, 255, 255, 0.4) inset,
+        /* 하단 라인 */
+        0 -1px 0 rgba(0, 0, 0, 0.15) inset,
+        /* 외곽 글로우 강화 */
+        0 0 0 1px rgba(255, 255, 255, 0.15),
+        /* 부드러운 외부 글로우 */
+        0 0 20px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 활성 상태 (클릭) */
+.btn-3d-glass:active {
+    /* 눌린 글래스 효과 */
+    background: 
+        linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.08) 0%,
+            rgba(255, 255, 255, 0.12) 100%) !important;
+    
+    /* 블러 감소 (더 선명해짐) */
+    backdrop-filter: blur(8px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(8px) saturate(150%) !important;
+    
+    /* 축소된 그림자 */
+    box-shadow: 
+        /* 작은 그림자 */
+        0 4px 16px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.5)),
+        /* 내부 어두운 영역 */
+        0 2px 4px rgba(0, 0, 0, 0.1) inset,
+        /* 상단 어두운 라인 */
+        0 1px 0 rgba(0, 0, 0, 0.1) inset !important;
+}
+
+/* ====================
+   글래스 하이라이트 효과
+   ==================== */
+
+.btn-3d-glass::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 50% !important;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        transparent 100%) !important;
+    border-radius: inherit !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+/* 글래스 반사 효과 */
+.btn-3d-glass::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 10% !important;
+    left: 10% !important;
+    width: 30% !important;
+    height: 60% !important;
+    background: linear-gradient(45deg, 
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 100%) !important;
+    border-radius: 50% !important;
+    transform: rotate(-20deg) !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+    opacity: 0.6 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.btn-3d-glass:hover::after {
+    opacity: 0.8 !important;
+}
+
+/* 텍스트가 효과 위에 오도록 */
+.btn-3d-glass {
+    position: relative !important;
+    z-index: 3 !important;
+}
+
+.btn-3d-glass > * {
+    position: relative !important;
+    z-index: 4 !important;
+}
+
+/* ====================
+   우선순위별 글래스 효과
+   ==================== */
+
+/* 높은 우선순위 글래스 버튼 */
+.btn-3d-glass.btn-3d-priority-high {
+    /* 더 강한 글래스 효과 */
+    background: 
+        linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0.08) 100%) !important;
+    
+    /* 더 강한 블러 */
+    backdrop-filter: blur(15px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(15px) saturate(200%) !important;
+    
+    /* 더 밝은 테두리 */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    
+    /* 더 강한 그림자 */
+    box-shadow: 
+        0 12px 48px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.5)),
+        0 6px 24px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.3)),
+        0 1px 0 rgba(255, 255, 255, 0.4) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.1) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.15) !important;
+    
+    /* 부드러운 펄스 애니메이션 */
+    animation: glass-pulse 3s ease-in-out infinite !important;
+}
+
+/* 중간 우선순위 글래스 버튼 */
+.btn-3d-glass.btn-3d-priority-medium {
+    background: 
+        linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0.06) 100%) !important;
+    
+    backdrop-filter: blur(12px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
+    
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+/* ====================
+   강도별 글래스 효과
+   ==================== */
+
+/* 약한 글래스 효과 */
+.btn-3d-glass.btn-3d-intensity-1 {
+    backdrop-filter: blur(6px) saturate(120%) !important;
+    -webkit-backdrop-filter: blur(6px) saturate(120%) !important;
+    
+    background: 
+        linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.08) 0%,
+            rgba(255, 255, 255, 0.04) 100%) !important;
+    
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, calc(var(--shadow-strength, 0.15) * 0.3)),
+        0 1px 0 rgba(255, 255, 255, 0.2) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.05) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+}
+
+.btn-3d-glass.btn-3d-intensity-1:hover {
+    backdrop-filter: blur(8px) saturate(140%) !important;
+    -webkit-backdrop-filter: blur(8px) saturate(140%) !important;
+    
+    box-shadow: 
+        0 6px 24px rgba(0, 0, 0, calc(var(--shadow-strength, 0.15) * 0.4)),
+        0 1px 0 rgba(255, 255, 255, 0.25) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.08) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.12) !important;
+}
+
+/* 강한 글래스 효과 */
+.btn-3d-glass.btn-3d-intensity-3 {
+    backdrop-filter: blur(20px) saturate(250%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(250%) !important;
+    
+    background: 
+        linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.2) 0%,
+            rgba(255, 255, 255, 0.1) 100%) !important;
+    
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    
+    box-shadow: 
+        0 16px 64px rgba(0, 0, 0, calc(var(--shadow-strength, 0.4) * 0.4)),
+        0 8px 32px rgba(0, 0, 0, calc(var(--shadow-strength, 0.4) * 0.3)),
+        0 1px 0 rgba(255, 255, 255, 0.5) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.15) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+}
+
+.btn-3d-glass.btn-3d-intensity-3:hover {
+    backdrop-filter: blur(25px) saturate(300%) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(300%) !important;
+    
+    box-shadow: 
+        0 20px 80px rgba(0, 0, 0, calc(var(--shadow-strength, 0.4) * 0.5)),
+        0 12px 48px rgba(0, 0, 0, calc(var(--shadow-strength, 0.4) * 0.4)),
+        0 1px 0 rgba(255, 255, 255, 0.6) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.2) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.25),
+        0 0 30px rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ====================
+   색상별 글래스 효과
+   ==================== */
+
+/* 블루 글래스 (기본) */
+.btn-3d-glass {
+    --glass-tint: rgba(59, 130, 246, 0.1);
+}
+
+/* 그린 글래스 (성공, 확인) */
+.btn-3d-glass[class*="success"],
+.btn-3d-glass[class*="confirm"],
+.btn-3d-glass[class*="green"] {
+    --glass-tint: rgba(34, 197, 94, 0.1);
+    
+    background: 
+        linear-gradient(135deg, 
+            rgba(34, 197, 94, 0.1) 0%,
+            rgba(255, 255, 255, 0.05) 100%) !important;
+    
+    border-color: rgba(34, 197, 94, 0.3) !important;
+}
+
+/* 레드 글래스 (위험, 삭제) */
+.btn-3d-glass[class*="danger"],
+.btn-3d-glass[class*="delete"],
+.btn-3d-glass[class*="red"] {
+    --glass-tint: rgba(239, 68, 68, 0.1);
+    
+    background: 
+        linear-gradient(135deg, 
+            rgba(239, 68, 68, 0.1) 0%,
+            rgba(255, 255, 255, 0.05) 100%) !important;
+    
+    border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+/* 옐로우 글래스 (경고) */
+.btn-3d-glass[class*="warning"],
+.btn-3d-glass[class*="yellow"] {
+    --glass-tint: rgba(245, 158, 11, 0.1);
+    
+    background: 
+        linear-gradient(135deg, 
+            rgba(245, 158, 11, 0.1) 0%,
+            rgba(255, 255, 255, 0.05) 100%) !important;
+    
+    border-color: rgba(245, 158, 11, 0.3) !important;
+}
+
+/* 퍼플 글래스 (프리미엄) */
+.btn-3d-glass[class*="premium"],
+.btn-3d-glass[class*="purple"] {
+    --glass-tint: rgba(147, 51, 234, 0.1);
+    
+    background: 
+        linear-gradient(135deg, 
+            rgba(147, 51, 234, 0.1) 0%,
+            rgba(255, 255, 255, 0.05) 100%) !important;
+    
+    border-color: rgba(147, 51, 234, 0.3) !important;
+}
+
+/* ====================
+   글래스 애니메이션
+   ==================== */
+
+/* 글래스 펄스 애니메이션 */
+@keyframes glass-pulse {
+    0%, 100% {
+        background: 
+            linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.15) 0%,
+                rgba(255, 255, 255, 0.08) 100%) !important;
+        
+        box-shadow: 
+            0 12px 48px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.5)),
+            0 6px 24px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.3)),
+            0 1px 0 rgba(255, 255, 255, 0.4) inset,
+            0 -1px 0 rgba(0, 0, 0, 0.1) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.15) !important;
+    }
+    50% {
+        background: 
+            linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.2) 0%,
+                rgba(255, 255, 255, 0.12) 100%) !important;
+        
+        box-shadow: 
+            0 16px 64px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.6)),
+            0 8px 32px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.4)),
+            0 1px 0 rgba(255, 255, 255, 0.5) inset,
+            0 -1px 0 rgba(0, 0, 0, 0.15) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.2),
+            0 0 20px rgba(255, 255, 255, 0.1) !important;
+    }
+}
+
+/* 글래스 시머 효과 */
+.btn-3d-glass.glass-shimmer::before {
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        transparent 100%) !important;
+    
+    animation: glass-shimmer 2s ease-in-out infinite !important;
+    transform: translateX(-100%) !important;
+}
+
+@keyframes glass-shimmer {
+    0% {
+        transform: translateX(-100%) !important;
+    }
+    100% {
+        transform: translateX(100%) !important;
+    }
+}
+
+/* ====================
+   다크모드 글래스 효과
+   ==================== */
+
+@media (prefers-color-scheme: dark) {
+    .btn-3d-glass {
+        /* 다크모드에서 어두운 글래스 */
+        background: 
+            linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(255, 255, 255, 0.03) 100%) !important;
+        
+        /* 더 강한 블러 */
+        backdrop-filter: blur(15px) saturate(200%) brightness(1.1) !important;
+        -webkit-backdrop-filter: blur(15px) saturate(200%) brightness(1.1) !important;
+        
+        /* 어두운 테두리 */
+        border-color: rgba(255, 255, 255, 0.15) !important;
+        
+        /* 더 강한 그림자 */
+        box-shadow: 
+            0 8px 32px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.8)),
+            0 1px 0 rgba(255, 255, 255, 0.2) inset,
+            0 -1px 0 rgba(0, 0, 0, 0.3) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+    }
+    
+    .btn-3d-glass:hover {
+        background: 
+            linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.12) 0%,
+                rgba(255, 255, 255, 0.06) 100%) !important;
+        
+        border-color: rgba(255, 255, 255, 0.25) !important;
+    }
+    
+    .btn-3d-glass::before {
+        background: linear-gradient(180deg, 
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0.03) 50%,
+            transparent 100%) !important;
+    }
+}
+
+/* 사이트별 다크모드 지원 */
+.dark .btn-3d-glass,
+[data-theme="dark"] .btn-3d-glass,
+.theme-dark .btn-3d-glass {
+    background: 
+        linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.08) 0%,
+            rgba(255, 255, 255, 0.03) 100%) !important;
+    
+    backdrop-filter: blur(15px) saturate(200%) brightness(1.1) !important;
+    -webkit-backdrop-filter: blur(15px) saturate(200%) brightness(1.1) !important;
+    
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.8)),
+        0 1px 0 rgba(255, 255, 255, 0.2) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.3) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ====================
+   성능 최적화
+   ==================== */
+
+/* 블러 효과 지원 확인 */
+@supports not (backdrop-filter: blur(10px)) {
+    .btn-3d-glass {
+        /* 폴백: 반투명 배경 */
+        background: rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    .btn-3d-glass:hover {
+        background: rgba(255, 255, 255, 0.15) !important;
+    }
+}
+
+/* 뷰포트 밖에서는 블러 최소화 */
+.btn-3d-glass:not(.btn-3d-visible) {
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+}
+
+/* 애니메이션 비활성화 시 모든 효과 제거 */
+@media (prefers-reduced-motion: reduce) {
+    .btn-3d-glass {
+        animation: none !important;
+    }
+    
+    .btn-3d-glass::before {
+        animation: none !important;
+    }
+    
+    .btn-3d-glass.btn-3d-priority-high {
+        animation: none !important;
+    }
+}
+
+/* ====================
+   브라우저 호환성
+   ==================== */
+
+/* Firefox 지원 */
+@-moz-document url-prefix() {
+    .btn-3d-glass {
+        /* Firefox에서는 블러 대신 투명도 사용 */
+        background: rgba(255, 255, 255, 0.15) !important;
+    }
+}
+
+/* 구형 브라우저 지원 */
+.no-backdrop-filter .btn-3d-glass {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}

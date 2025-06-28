@@ -1,0 +1,271 @@
+/* classic.css - 클래식 3D 스타일 */
+
+/* ====================
+   클래식 3D 효과
+   전통적인 버튼 스타일로 깔끔하고 직관적
+   ==================== */
+
+.btn-3d-classic {
+    /* 클래식 그라디언트 배경 */
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(0, 0, 0, 0.05) 100%) !important;
+    
+    /* 테두리 강화 */
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    
+    /* 클래식 그림자 */
+    box-shadow: 
+        /* 메인 그림자 */
+        0 4px 8px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.8)),
+        /* 상단 하이라이트 */
+        0 1px 0 rgba(255, 255, 255, 0.1) inset,
+        /* 하단 쉐도우 */
+        0 -1px 0 rgba(0, 0, 0, 0.1) inset,
+        /* 외곽 테두리 글로우 */
+        0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+/* 호버 효과 */
+.btn-3d-classic:hover {
+    /* 배경 밝기 증가 */
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.08) 50%,
+        rgba(0, 0, 0, 0.03) 100%) !important;
+    
+    /* 그림자 강화 */
+    box-shadow: 
+        /* 메인 그림자 확장 */
+        0 6px 12px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 1.0)),
+        /* 상단 하이라이트 강화 */
+        0 1px 0 rgba(255, 255, 255, 0.15) inset,
+        /* 하단 쉐도우 */
+        0 -1px 0 rgba(0, 0, 0, 0.15) inset,
+        /* 외곽 글로우 */
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        /* 부드러운 외곽 글로우 */
+        0 0 4px rgba(255, 255, 255, 0.1) !important;
+    
+    /* 테두리 밝기 증가 */
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* 활성 상태 (클릭) */
+.btn-3d-classic:active {
+    /* 배경 어둡게 */
+    background: linear-gradient(145deg, 
+        rgba(0, 0, 0, 0.05) 0%,
+        rgba(255, 255, 255, 0.03) 50%,
+        rgba(0, 0, 0, 0.1) 100%) !important;
+    
+    /* 그림자 축소 (눌린 효과) */
+    box-shadow: 
+        /* 작은 그림자 */
+        0 2px 4px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.6)),
+        /* 내부 쉐도우 (눌린 느낌) */
+        0 1px 2px rgba(0, 0, 0, 0.2) inset,
+        /* 상단 어두운 라인 */
+        0 1px 0 rgba(0, 0, 0, 0.1) inset !important;
+    
+    /* 테두리 어둡게 */
+    border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ====================
+   우선순위별 클래식 스타일
+   ==================== */
+
+/* 높은 우선순위 클래식 버튼 */
+.btn-3d-classic.btn-3d-priority-high {
+    /* 더 강한 그라디언트 */
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(0, 0, 0, 0.05) 100%) !important;
+    
+    /* 더 강한 그림자 */
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 1.2)),
+        0 2px 4px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.8)),
+        0 1px 0 rgba(255, 255, 255, 0.2) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.1) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+    
+    /* 더 밝은 테두리 */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.btn-3d-classic.btn-3d-priority-high:hover {
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 1.4)),
+        0 4px 8px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 1.0)),
+        0 1px 0 rgba(255, 255, 255, 0.25) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.15) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.15),
+        0 0 8px rgba(255, 255, 255, 0.15) !important;
+}
+
+/* 중간 우선순위 클래식 버튼 */
+.btn-3d-classic.btn-3d-priority-medium {
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0.06) 50%,
+        rgba(0, 0, 0, 0.04) 100%) !important;
+}
+
+/* ====================
+   강도별 클래식 효과
+   ==================== */
+
+/* 약한 클래식 효과 */
+.btn-3d-classic.btn-3d-intensity-1 {
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, calc(var(--shadow-strength, 0.15) * 0.6)),
+        0 1px 0 rgba(255, 255, 255, 0.08) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.05) inset !important;
+}
+
+.btn-3d-classic.btn-3d-intensity-1:hover {
+    box-shadow: 
+        0 3px 6px rgba(0, 0, 0, calc(var(--shadow-strength, 0.15) * 0.8)),
+        0 1px 0 rgba(255, 255, 255, 0.12) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.08) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+/* 강한 클래식 효과 */
+.btn-3d-classic.btn-3d-intensity-3 {
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, calc(var(--shadow-strength, 0.4) * 1.0)),
+        0 3px 6px rgba(0, 0, 0, calc(var(--shadow-strength, 0.4) * 0.6)),
+        0 1px 0 rgba(255, 255, 255, 0.15) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.15) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+.btn-3d-classic.btn-3d-intensity-3:hover {
+    box-shadow: 
+        0 10px 20px rgba(0, 0, 0, calc(var(--shadow-strength, 0.4) * 1.2)),
+        0 6px 12px rgba(0, 0, 0, calc(var(--shadow-strength, 0.4) * 0.8)),
+        0 1px 0 rgba(255, 255, 255, 0.2) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.2) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.15),
+        0 0 6px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ====================
+   텍스처 및 세부 효과
+   ==================== */
+
+/* 미세한 텍스처 추가 */
+.btn-3d-classic::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    border-radius: inherit !important;
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.05) 0%, transparent 50%) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+/* 텍스트가 텍스처 위에 오도록 */
+.btn-3d-classic {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.btn-3d-classic > * {
+    position: relative !important;
+    z-index: 3 !important;
+}
+
+/* ====================
+   다크모드 클래식 스타일
+   ==================== */
+
+@media (prefers-color-scheme: dark) {
+    .btn-3d-classic {
+        background: linear-gradient(145deg, 
+            rgba(255, 255, 255, 0.08) 0%,
+            rgba(255, 255, 255, 0.03) 50%,
+            rgba(0, 0, 0, 0.1) 100%) !important;
+        
+        border-color: rgba(255, 255, 255, 0.15) !important;
+        
+        box-shadow: 
+            0 4px 8px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 1.2)),
+            0 1px 0 rgba(255, 255, 255, 0.08) inset,
+            0 -1px 0 rgba(0, 0, 0, 0.2) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.03) !important;
+    }
+    
+    .btn-3d-classic:hover {
+        background: linear-gradient(145deg, 
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0.06) 50%,
+            rgba(0, 0, 0, 0.08) 100%) !important;
+            
+        border-color: rgba(255, 255, 255, 0.25) !important;
+    }
+}
+
+/* 사이트별 다크모드 지원 */
+.dark .btn-3d-classic,
+[data-theme="dark"] .btn-3d-classic,
+.theme-dark .btn-3d-classic {
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.03) 50%,
+        rgba(0, 0, 0, 0.1) 100%) !important;
+    
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 1.2)),
+        0 1px 0 rgba(255, 255, 255, 0.08) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.2) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.03) !important;
+}
+
+/* ====================
+   애니메이션 효과
+   ==================== */
+
+/* 클래식 펄스 효과 (중요한 버튼용) */
+.btn-3d-classic.btn-3d-priority-high {
+    animation: classic-pulse 3s ease-in-out infinite !important;
+}
+
+@keyframes classic-pulse {
+    0%, 100% {
+        box-shadow: 
+            0 6px 12px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 1.2)),
+            0 2px 4px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.8)),
+            0 1px 0 rgba(255, 255, 255, 0.2) inset,
+            0 -1px 0 rgba(0, 0, 0, 0.1) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+    }
+    50% {
+        box-shadow: 
+            0 8px 16px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 1.4)),
+            0 4px 8px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 1.0)),
+            0 1px 0 rgba(255, 255, 255, 0.25) inset,
+            0 -1px 0 rgba(0, 0, 0, 0.15) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.15),
+            0 0 4px rgba(255, 255, 255, 0.1) !important;
+    }
+}
+
+/* 애니메이션 비활성화 시 펄스 제거 */
+@media (prefers-reduced-motion: reduce) {
+    .btn-3d-classic {
+        animation: none !important;
+    }
+}

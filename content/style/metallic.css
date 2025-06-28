@@ -1,0 +1,975 @@
+/* metallic.css - 메탈릭 3D 스타일 */
+
+/* ====================
+   메탈릭 3D 효과
+   금속적이고 고급스러운 느낌
+   ==================== */
+
+.btn-3d-metallic {
+    /* 메탈릭 그라디언트 배경 */
+    background: linear-gradient(145deg, 
+        #f8fafc 0%,
+        #e2e8f0 25%,
+        #cbd5e1 50%,
+        #94a3b8 75%,
+        #64748b 100%) !important;
+    
+    /* 메탈릭 테두리 */
+    border: 1px solid rgba(100, 116, 139, 0.3) !important;
+    
+    /* 메탈릭 그림자 */
+    box-shadow: 
+        /* 메인 그림자 */
+        0 6px 12px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.4)),
+        0 3px 6px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.3)),
+        /* 상단 하이라이트 */
+        0 1px 0 rgba(255, 255, 255, 1.0) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.6) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.5) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.4),
+        0 0 10px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ====================
+   메탈릭 텍스처 효과
+   ==================== */
+
+/* 브러시 텍스처 */
+.btn-3d-metallic::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            rgba(255, 255, 255, 0.03) 1px,
+            rgba(255, 255, 255, 0.08) 2px,
+            rgba(255, 255, 255, 0.03) 3px,
+            transparent 4px
+        ) !important;
+    border-radius: inherit !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+/* 반사 하이라이트 */
+.btn-3d-metallic::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 15% !important;
+    left: 20% !important;
+    width: 60% !important;
+    height: 30% !important;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%) !important;
+    border-radius: 50% !important;
+    transform: rotate(-10deg) !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+    opacity: 0.7 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.btn-3d-metallic:hover::after {
+    opacity: 0.9 !important;
+}
+
+/* 텍스트가 효과 위에 오도록 */
+.btn-3d-metallic {
+    position: relative !important;
+    z-index: 3 !important;
+}
+
+.btn-3d-metallic > * {
+    position: relative !important;
+    z-index: 4 !important;
+}
+
+/* ====================
+   메탈릭 애니메이션
+   ==================== */
+
+/* 메탈릭 펄스 애니메이션 */
+@keyframes metallic-pulse {
+    0%, 100% {
+        background: linear-gradient(145deg, 
+            #ffffff 0%,
+            #f8fafc 20%,
+            #e2e8f0 40%,
+            #cbd5e1 60%,
+            #94a3b8 80%,
+            #64748b 100%) !important;
+        
+        box-shadow: 
+            0 8px 16px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.6)),
+            0 4px 8px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.5)),
+            0 1px 0 rgba(255, 255, 255, 0.9) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.4) inset,
+            0 -1px 0 rgba(0, 0, 0, 0.3) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+    }
+    50% {
+        background: linear-gradient(145deg, 
+            #ffffff 0%,
+            #ffffff 15%,
+            #f8fafc 30%,
+            #f1f5f9 45%,
+            #e2e8f0 60%,
+            #cbd5e1 75%,
+            #94a3b8 100%) !important;
+        
+        box-shadow: 
+            0 10px 20px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.7)),
+            0 6px 12px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.6)),
+            0 1px 0 rgba(255, 255, 255, 1.0) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+            0 -1px 0 rgba(0, 0, 0, 0.35) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.3),
+            0 0 8px rgba(255, 255, 255, 0.2) !important;
+    }
+}
+
+/* 메탈릭 시머 효과 */
+.btn-3d-metallic.metallic-shimmer {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.btn-3d-metallic.metallic-shimmer::before {
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        transparent 100%) !important;
+    
+    animation: metallic-shimmer 3s ease-in-out infinite !important;
+    transform: translateX(-100%) skewX(-20deg) !important;
+    width: 200% !important;
+}
+
+@keyframes metallic-shimmer {
+    0% {
+        transform: translateX(-100%) skewX(-20deg) !important;
+    }
+    100% {
+        transform: translateX(100%) skewX(-20deg) !important;
+    }
+}
+
+/* ====================
+   다크모드 메탈릭 효과
+   ==================== */
+
+@media (prefers-color-scheme: dark) {
+    .btn-3d-metallic {
+        /* 다크모드에서 어두운 메탈릭 */
+        background: linear-gradient(145deg, 
+            #475569 0%,
+            #334155 25%,
+            #1e293b 50%,
+            #0f172a 75%,
+            #020617 100%) !important;
+        
+        /* 어두운 테두리 */
+        border-color: rgba(71, 85, 105, 0.5) !important;
+        
+        /* 다크 텍스트 */
+        color: #f1f5f9 !important;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8) !important;
+        
+        /* 어두운 그림자 */
+        box-shadow: 
+            0 6px 12px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.8)),
+            0 3px 6px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.6)),
+            0 1px 0 rgba(255, 255, 255, 0.1) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+            0 -1px 0 rgba(0, 0, 0, 0.5) inset !important;
+    }
+    
+    .btn-3d-metallic:hover {
+        background: linear-gradient(145deg, 
+            #64748b 0%,
+            #475569 25%,
+            #334155 50%,
+            #1e293b 75%,
+            #0f172a 100%) !important;
+        
+        border-color: rgba(100, 116, 139, 0.7) !important;
+        
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.9) !important;
+    }
+    
+    .btn-3d-metallic::after {
+        background: linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0.05) 50%,
+            transparent 100%) !important;
+    }
+    
+    /* 다크모드 골드 */
+    .btn-3d-metallic.metallic-gold {
+        background: linear-gradient(145deg, 
+            #d97706 0%,
+            #b45309 25%,
+            #92400e 50%,
+            #78350f 75%,
+            #451a03 100%) !important;
+        
+        color: #fbbf24 !important;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8) !important;
+    }
+}
+
+/* 사이트별 다크모드 지원 */
+.dark .btn-3d-metallic,
+[data-theme="dark"] .btn-3d-metallic,
+.theme-dark .btn-3d-metallic {
+    background: linear-gradient(145deg, 
+        #475569 0%,
+        #334155 25%,
+        #1e293b 50%,
+        #0f172a 75%,
+        #020617 100%) !important;
+    
+    border-color: rgba(71, 85, 105, 0.5) !important;
+    color: #f1f5f9 !important;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8) !important;
+    
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.8)),
+        0 3px 6px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.6)),
+        0 1px 0 rgba(255, 255, 255, 0.1) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.5) inset !important;
+}
+
+/* ====================
+   특수 메탈릭 효과
+   ==================== */
+
+/* 헤어라인 텍스처 */
+.btn-3d-metallic.metallic-hairline::before {
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            rgba(255, 255, 255, 0.02) 0.5px,
+            rgba(255, 255, 255, 0.05) 1px,
+            rgba(255, 255, 255, 0.02) 1.5px,
+            transparent 2px
+        ) !important;
+}
+
+/* 다이아몬드 컷 효과 */
+.btn-3d-metallic.metallic-diamond {
+    background: 
+        linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%),
+        linear-gradient(135deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%),
+        linear-gradient(145deg, 
+            #f8fafc 0%,
+            #e2e8f0 25%,
+            #cbd5e1 50%,
+            #94a3b8 75%,
+            #64748b 100%) !important;
+}
+
+/* 산화 효과 (구리 스타일) */
+.btn-3d-metallic.metallic-oxidized {
+    background: linear-gradient(145deg, 
+        #065f46 0%,
+        #047857 25%,
+        #059669 50%,
+        #10b981 75%,
+        #34d399 100%) !important;
+    
+    color: #ecfdf5 !important;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6) !important;
+    
+    border-color: rgba(6, 95, 70, 0.3) !important;
+}
+
+/* ====================
+   성능 최적화
+   ==================== */
+
+/* 뷰포트 밖에서는 텍스처 효과 최소화 */
+.btn-3d-metallic:not(.btn-3d-visible)::before {
+    opacity: 0.3 !important;
+}
+
+.btn-3d-metallic:not(.btn-3d-visible)::after {
+    opacity: 0.3 !important;
+}
+
+/* 애니메이션 비활성화 시 모든 효과 제거 */
+@media (prefers-reduced-motion: reduce) {
+    .btn-3d-metallic {
+        animation: none !important;
+    }
+    
+    .btn-3d-metallic::before {
+        animation: none !important;
+    }
+    
+    .btn-3d-metallic.btn-3d-priority-high {
+        animation: none !important;
+    }
+    
+    .btn-3d-metallic.metallic-shimmer::before {
+        animation: none !important;
+    }
+}
+
+/* ====================
+   브라우저 호환성
+   ==================== */
+
+/* 구형 브라우저에서 기본 그라디언트 제공 */
+.no-gradients .btn-3d-metallic {
+    background: #e2e8f0 !important;
+    border: 1px solid #94a3b8 !important;
+}
+
+/* CSS 변수 미지원 브라우저 */
+.no-css-variables .btn-3d-metallic {
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, 0.1),
+        0 3px 6px rgba(0, 0, 0, 0.08),
+        0 1px 0 rgba(255, 255, 255, 0.8) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.3) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.2) inset !important;
+}
+
+/* ====================
+   반응형 조정
+   ==================== */
+
+/* 모바일에서 메탈릭 효과 간소화 */
+@media (max-width: 768px) {
+    .btn-3d-metallic {
+        background: linear-gradient(145deg, 
+            #f8fafc 0%,
+            #e2e8f0 50%,
+            #cbd5e1 100%) !important;
+    }
+    
+    .btn-3d-metallic::before {
+        opacity: 0.5 !important;
+    }
+    
+    .btn-3d-metallic::after {
+        opacity: 0.4 !important;
+    }
+}
+
+/* 터치 디바이스에서 호버 효과 제거 */
+@media (hover: none) {
+    .btn-3d-metallic:hover {
+        background: linear-gradient(145deg, 
+            #f8fafc 0%,
+            #e2e8f0 25%,
+            #cbd5e1 50%,
+            #94a3b8 75%,
+            #64748b 100%) !important;
+    }
+}
+
+/* 호버 효과 */
+.btn-3d-metallic:hover {
+    /* 더 밝은 메탈릭 그라디언트 */
+    background: linear-gradient(145deg, 
+        #ffffff 0%,
+        #f1f5f9 25%,
+        #e2e8f0 50%,
+        #cbd5e1 75%,
+        #94a3b8 100%) !important;
+    
+    /* 테두리 밝아짐 */
+    border-color: rgba(100, 116, 139, 0.5) !important;
+    
+    /* 그림자 강화 */
+    box-shadow: 
+        /* 확장된 그림자 */
+        0 8px 16px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.5)),
+        0 4px 8px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.4)),
+        /* 강화된 하이라이트 */
+        0 1px 0 rgba(255, 255, 255, 0.9) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.4) inset,
+        /* 하단 어두운 영역 */
+        0 -1px 0 rgba(0, 0, 0, 0.25) inset,
+        /* 외부 글로우 */
+        0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+    
+    /* 텍스트 효과 강화 */
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+}
+
+/* 활성 상태 (클릭) */
+.btn-3d-metallic:active {
+    /* 눌린 메탈릭 효과 */
+    background: linear-gradient(145deg, 
+        #e2e8f0 0%,
+        #cbd5e1 25%,
+        #94a3b8 50%,
+        #64748b 75%,
+        #475569 100%) !important;
+    
+    /* 축소된 그림자 */
+    box-shadow: 
+        /* 작은 그림자 */
+        0 2px 4px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.6)),
+        /* 내부 어두운 영역 (눌린 효과) */
+        0 2px 4px rgba(0, 0, 0, 0.3) inset,
+        /* 상단 어두운 라인 */
+        0 1px 0 rgba(0, 0, 0, 0.2) inset !important;
+    
+    /* 텍스트 어둡게 */
+    color: #334155 !important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ====================
+   메탈릭 타입별 스타일
+   ==================== */
+
+/* 실버 메탈릭 (기본) */
+.btn-3d-metallic {
+    --metallic-base: #e2e8f0;
+    --metallic-light: #f8fafc;
+    --metallic-dark: #64748b;
+}
+
+/* 골드 메탈릭 */
+.btn-3d-metallic.metallic-gold,
+.btn-3d-metallic[class*="gold"],
+.btn-3d-metallic[class*="premium"] {
+    --metallic-base: #fbbf24;
+    --metallic-light: #fef3c7;
+    --metallic-dark: #d97706;
+    
+    background: linear-gradient(145deg, 
+        #fef3c7 0%,
+        #fde68a 25%,
+        #fbbf24 50%,
+        #f59e0b 75%,
+        #d97706 100%) !important;
+    
+    color: #92400e !important;
+    text-shadow: 0 1px 0 rgba(254, 243, 199, 0.8) !important;
+    
+    border-color: rgba(217, 119, 6, 0.3) !important;
+}
+
+.btn-3d-metallic.metallic-gold:hover {
+    background: linear-gradient(145deg, 
+        #fffbeb 0%,
+        #fef3c7 25%,
+        #fde68a 50%,
+        #fbbf24 75%,
+        #f59e0b 100%) !important;
+}
+
+/* 브론즈 메탈릭 */
+.btn-3d-metallic.metallic-bronze,
+.btn-3d-metallic[class*="bronze"] {
+    --metallic-base: #d97706;
+    --metallic-light: #fed7aa;
+    --metallic-dark: #9a3412;
+    
+    background: linear-gradient(145deg, 
+        #fed7aa 0%,
+        #fdba74 25%,
+        #fb923c 50%,
+        #ea580c 75%,
+        #dc2626 100%) !important;
+    
+    color: #7c2d12 !important;
+    text-shadow: 0 1px 0 rgba(254, 215, 170, 0.8) !important;
+    
+    border-color: rgba(154, 52, 18, 0.3) !important;
+}
+
+/* 플래티넘 메탈릭 */
+.btn-3d-metallic.metallic-platinum,
+.btn-3d-metallic[class*="platinum"] {
+    --metallic-base: #f1f5f9;
+    --metallic-light: #ffffff;
+    --metallic-dark: #475569;
+    
+    background: linear-gradient(145deg, 
+        #ffffff 0%,
+        #f8fafc 25%,
+        #f1f5f9 50%,
+        #e2e8f0 75%,
+        #cbd5e1 100%) !important;
+    
+    color: #0f172a !important;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+    
+    border-color: rgba(71, 85, 105, 0.2) !important;
+}
+
+/* ====================
+   우선순위별 메탈릭 효과
+   ==================== */
+
+/* 높은 우선순위 메탈릭 버튼 */
+.btn-3d-metallic.btn-3d-priority-high {
+    /* 더 강한 그라디언트 */
+    background: linear-gradient(145deg, 
+        #ffffff 0%,
+        #f8fafc 20%,
+        #e2e8f0 40%,
+        #cbd5e1 60%,
+        #94a3b8 80%,
+        #64748b 100%) !important;
+    
+    /* 더 강한 그림자 */
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.6)),
+        0 4px 8px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.5)),
+        0 1px 0 rgba(255, 255, 255, 0.9) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.4) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.3) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+    
+    /* 미묘한 펄스 애니메이션 */
+    animation: metallic-pulse 3s ease-in-out infinite !important;
+}
+
+/* 중간 우선순위 메탈릭 버튼 */
+.btn-3d-metallic.btn-3d-priority-medium {
+    background: linear-gradient(145deg, 
+        #f8fafc 0%,
+        #f1f5f9 25%,
+        #e2e8f0 50%,
+        #cbd5e1 75%,
+        #94a3b8 100%) !important;
+}
+
+/* ====================
+   강도별 메탈릭 효과
+   ==================== */
+
+/* 약한 메탈릭 효과 */
+.btn-3d-metallic.btn-3d-intensity-1 {
+    background: linear-gradient(145deg, 
+        #f8fafc 0%,
+        #f1f5f9 50%,
+        #e2e8f0 100%) !important;
+    
+    box-shadow: 
+        0 3px 6px rgba(0, 0, 0, calc(var(--shadow-strength, 0.15) * 0.4)),
+        0 1px 0 rgba(255, 255, 255, 0.6) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.1) inset !important;
+}
+
+.btn-3d-metallic.btn-3d-intensity-1:hover {
+    background: linear-gradient(145deg, 
+        #ffffff 0%,
+        #f8fafc 50%,
+        #f1f5f9 100%) !important;
+    
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, calc(var(--shadow-strength, 0.15) * 0.5)),
+        0 1px 0 rgba(255, 255, 255, 0.7) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.3) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.15) inset !important;
+}
+
+/* 강한 메탈릭 효과 */
+.btn-3d-metallic.btn-3d-intensity-3 {
+    background: linear-gradient(145deg, 
+        #ffffff 0%,
+        #f8fafc 15%,
+        #e2e8f0 30%,
+        #cbd5e1 45%,
+        #94a3b8 60%,
+        #64748b 75%,
+        #475569 90%,
+        #334155 100%) !important;
+    
+    box-shadow: 
+        0 10px 20px rgba(0, 0, 0, calc(var(--shadow-strength, 0.4) * 0.5)),
+        0 6px 12px rgba(0, 0, 0, calc(var(--shadow-strength, 0.4) * 0.4)),
+        0 1px 0 rgba(255, 255, 255, 1.0) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.4) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.3) !important;
+}
+
+.btn-3d-metallic.btn-3d-intensity-3:hover {
+    background: linear-gradient(145deg, 
+        #ffffff 0%,
+        #ffffff 10%,
+        #f8fafc 20%,
+        #f1f5f9 35%,
+        #e2e8f0 50%,
+        #cbd5e1 65%,
+        #94a3b8 80%,
+        #64748b 100%) !important;
+    
+    box-shadow: 
+        0 12px 24px rgba(0, 0, 0, calc(var(--shadow-strength, 0.4) * 0.6)),
+        0 8px 16px rgba(0, 0, 0, calc(var(--shadow-strength, 0.4) * 0.5)),
+        0 1px 0 rgba(255, 255, 255, 1.0) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.6) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.5) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.4),
+        0 0 10px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ====================
+   메탈릭 텍스처 효과
+   ==================== */
+
+/* 브러시 텍스처 */
+.btn-3d-metallic::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            rgba(255, 255, 255, 0.03) 1px,
+            rgba(255, 255, 255, 0.08) 2px,
+            rgba(255, 255, 255, 0.03) 3px,
+            transparent 4px
+        ) !important;
+    border-radius: inherit !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+/* 반사 하이라이트 */
+.btn-3d-metallic::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 15% !important;
+    left: 20% !important;
+    width: 60% !important;
+    height: 30% !important;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%) !important;
+    border-radius: 50% !important;
+    transform: rotate(-10deg) !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+    opacity: 0.7 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.btn-3d-metallic:hover::after {
+    opacity: 0.9 !important;
+}
+
+/* 텍스트가 효과 위에 오도록 */
+.btn-3d-metallic {
+    position: relative !important;
+    z-index: 3 !important;
+}
+
+.btn-3d-metallic > * {
+    position: relative !important;
+    z-index: 4 !important;
+}
+
+/* ====================
+   메탈릭 애니메이션
+   ==================== */
+
+/* 메탈릭 펄스 애니메이션 */
+@keyframes metallic-pulse {
+    0%, 100% {
+        background: linear-gradient(145deg, 
+            #ffffff 0%,
+            #f8fafc 20%,
+            #e2e8f0 40%,
+            #cbd5e1 60%,
+            #94a3b8 80%,
+            #64748b 100%) !important;
+        
+        box-shadow: 
+            0 8px 16px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.6)),
+            0 4px 8px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.5)),
+            0 1px 0 rgba(255, 255, 255, 0.9) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.4) inset,
+            0 -1px 0 rgba(0, 0, 0, 0.3) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+    }
+    50% {
+        background: linear-gradient(145deg, 
+            #ffffff 0%,
+            #ffffff 15%,
+            #f8fafc 30%,
+            #f1f5f9 45%,
+            #e2e8f0 60%,
+            #cbd5e1 75%,
+            #94a3b8 100%) !important;
+        
+        box-shadow: 
+            0 10px 20px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.7)),
+            0 6px 12px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.6)),
+            0 1px 0 rgba(255, 255, 255, 1.0) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+            0 -1px 0 rgba(0, 0, 0, 0.35) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.3),
+            0 0 8px rgba(255, 255, 255, 0.2) !important;
+    }
+}
+
+/* 메탈릭 시머 효과 */
+.btn-3d-metallic.metallic-shimmer {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.btn-3d-metallic.metallic-shimmer::before {
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        transparent 100%) !important;
+    
+    animation: metallic-shimmer 3s ease-in-out infinite !important;
+    transform: translateX(-100%) skewX(-20deg) !important;
+    width: 200% !important;
+}
+
+@keyframes metallic-shimmer {
+    0% {
+        transform: translateX(-100%) skewX(-20deg) !important;
+    }
+    100% {
+        transform: translateX(100%) skewX(-20deg) !important;
+    }
+}
+
+/* ====================
+   다크모드 메탈릭 효과
+   ==================== */
+
+@media (prefers-color-scheme: dark) {
+    .btn-3d-metallic {
+        /* 다크모드에서 어두운 메탈릭 */
+        background: linear-gradient(145deg, 
+            #475569 0%,
+            #334155 25%,
+            #1e293b 50%,
+            #0f172a 75%,
+            #020617 100%) !important;
+        
+        /* 어두운 테두리 */
+        border-color: rgba(71, 85, 105, 0.5) !important;
+        
+        /* 다크 텍스트 */
+        color: #f1f5f9 !important;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8) !important;
+        
+        /* 어두운 그림자 */
+        box-shadow: 
+            0 6px 12px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.8)),
+            0 3px 6px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.6)),
+            0 1px 0 rgba(255, 255, 255, 0.1) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+            0 -1px 0 rgba(0, 0, 0, 0.5) inset !important;
+    }
+    
+    .btn-3d-metallic:hover {
+        background: linear-gradient(145deg, 
+            #64748b 0%,
+            #475569 25%,
+            #334155 50%,
+            #1e293b 75%,
+            #0f172a 100%) !important;
+        
+        border-color: rgba(100, 116, 139, 0.7) !important;
+        
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.9) !important;
+    }
+    
+    .btn-3d-metallic::after {
+        background: linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0.05) 50%,
+            transparent 100%) !important;
+    }
+    
+    /* 다크모드 골드 */
+    .btn-3d-metallic.metallic-gold {
+        background: linear-gradient(145deg, 
+            #d97706 0%,
+            #b45309 25%,
+            #92400e 50%,
+            #78350f 75%,
+            #451a03 100%) !important;
+        
+        color: #fbbf24 !important;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8) !important;
+    }
+}
+
+/* 사이트별 다크모드 지원 */
+.dark .btn-3d-metallic,
+[data-theme="dark"] .btn-3d-metallic,
+.theme-dark .btn-3d-metallic {
+    background: linear-gradient(145deg, 
+        #475569 0%,
+        #334155 25%,
+        #1e293b 50%,
+        #0f172a 75%,
+        #020617 100%) !important;
+    
+    border-color: rgba(71, 85, 105, 0.5) !important;
+    color: #f1f5f9 !important;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8) !important;
+    
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.8)),
+        0 3px 6px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.6)),
+        0 1px 0 rgba(255, 255, 255, 0.1) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.5) inset !important;
+}
+
+/* ====================
+   특수 메탈릭 효과
+   ==================== */
+
+/* 헤어라인 텍스처 */
+.btn-3d-metallic.metallic-hairline::before {
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            rgba(255, 255, 255, 0.02) 0.5px,
+            rgba(255, 255, 255, 0.05) 1px,
+            rgba(255, 255, 255, 0.02) 1.5px,
+            transparent 2px
+        ) !important;
+}
+
+/* 다이아몬드 컷 효과 */
+.btn-3d-metallic.metallic-diamond {
+    background: 
+        linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%),
+        linear-gradient(135deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%),
+        linear-gradient(145deg, 
+            #f8fafc 0%,
+            #e2e8f0 25%,
+            #cbd5e1 50%,
+            #94a3b8 75%,
+            #64748b 100%) !important;
+}
+
+/* 산화 효과 (구리 스타일) */
+.btn-3d-metallic.metallic-oxidized {
+    background: linear-gradient(145deg, 
+        #065f46 0%,
+        #047857 25%,
+        #059669 50%,
+        #10b981 75%,
+        #34d399 100%) !important;
+    
+    color: #ecfdf5 !important;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6) !important;
+    
+    border-color: rgba(6, 95, 70, 0.3) !important;
+}
+
+/* ====================
+   성능 최적화
+   ==================== */
+
+/* 뷰포트 밖에서는 텍스처 효과 최소화 */
+.btn-3d-metallic:not(.btn-3d-visible)::before {
+    opacity: 0.3 !important;
+}
+
+.btn-3d-metallic:not(.btn-3d-visible)::after {
+    opacity: 0.3 !important;
+}
+
+/* 애니메이션 비활성화 시 모든 효과 제거 */
+@media (prefers-reduced-motion: reduce) {
+    .btn-3d-metallic {
+        animation: none !important;
+    }
+    
+    .btn-3d-metallic::before {
+        animation: none !important;
+    }
+    
+    .btn-3d-metallic.btn-3d-priority-high {
+        animation: none !important;
+    }
+    
+    .btn-3d-metallic.metallic-shimmer::before {
+        animation: none !important;
+    }
+}
+
+/* ====================
+   브라우저 호환성
+   ==================== */
+
+/* 구형 브라우저에서 기본 그라디언트 제공 */
+.no-gradients .btn-3d-metallic {
+    background: #e2e8f0 !important;
+    border: 1px solid #94a3b8 !important;
+}
+
+/* CSS 변수 미지원 브라우저 */
+.no-css-variables .btn-3d-metallic {
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, 0.1),
+        0 3px 6px rgba(0, 0, 0, 0.08),
+        0 1px 0 rgba(255, 255, 255, 0.8) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.3) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.2) inset !important;
+}
+
+/* ====================
+   반응형 조정
+   ==================== */
+
+/* 모바일에서 메탈릭 효과 간소화 */
+@media (max-width: 768px) {
+    .btn-3d-metallic {
+        background: linear-gradient(145deg, 
+            #f8fafc 0%,
+            #e2e8f0 50%,
+            #cbd5e1 100%) !important;
+    }
+    
+    .btn-3d-metallic::before {
+        opacity: 0.5 !important;
+    }
+    
+    .btn-3d-metallic::after {
+        opacity: 0.4 !important;
+    }
+}
+
+/* 터치 디바이스에서 호버 효과 제거 */
+@media (hover: none) {
+    .btn-3d-metallic:hover {
+        background: linear-gradient(145deg, 
+            #f8fafc 0%,
+            #e2e8f0 25%,
+            #cbd5e1 50%,
+            #94a3b8 75%,
+            #64748b 100%) !important;
+    }
+}

@@ -1,0 +1,305 @@
+/* base.css - 3D Button Effects 기본 스타일 */
+
+/* ====================
+   기본 3D 효과 베이스
+   ==================== */
+
+.btn-3d-enhanced {
+    /* 3D 변환 기본 설정 */
+    position: relative !important;
+    transform-style: preserve-3d !important;
+    backface-visibility: hidden !important;
+    
+    /* 부드러운 전환 효과 */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    
+    /* 기본 z-index로 레이어 분리 */
+    z-index: 1 !important;
+    
+    /* 기본 커서 */
+    cursor: pointer !important;
+    
+    /* 텍스트 렌더링 최적화 */
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* 호버 상태 기본 효과 */
+.btn-3d-enhanced:hover {
+    z-index: 2 !important;
+}
+
+/* 활성 상태 (클릭 시) 기본 효과 */
+.btn-3d-enhanced:active {
+    z-index: 3 !important;
+    transition: all 0.1s ease !important;
+}
+
+/* 포커스 상태 (키보드 접근성) */
+.btn-3d-enhanced:focus {
+    outline: 2px solid rgba(59, 130, 246, 0.5) !important;
+    outline-offset: 2px !important;
+}
+
+/* ====================
+   강도별 기본 설정
+   ==================== */
+
+/* 약한 효과 (Intensity 1) */
+.btn-3d-intensity-1 {
+    --shadow-strength: 0.15;
+    --transform-scale: 1.02;
+    --hover-lift: 1px;
+    --active-press: 0.5px;
+    --glow-strength: 0.3;
+}
+
+.btn-3d-intensity-1:hover {
+    transform: perspective(1000px) rotateX(-2deg) translateY(-1px) scale(1.02) !important;
+}
+
+.btn-3d-intensity-1:active {
+    transform: perspective(1000px) rotateX(1deg) translateY(0.5px) scale(0.98) !important;
+}
+
+/* 보통 효과 (Intensity 2) */
+.btn-3d-intensity-2 {
+    --shadow-strength: 0.25;
+    --transform-scale: 1.05;
+    --hover-lift: 2px;
+    --active-press: 1px;
+    --glow-strength: 0.5;
+}
+
+.btn-3d-intensity-2:hover {
+    transform: perspective(1000px) rotateX(-4deg) translateY(-2px) scale(1.05) !important;
+}
+
+.btn-3d-intensity-2:active {
+    transform: perspective(1000px) rotateX(2deg) translateY(1px) scale(0.95) !important;
+}
+
+/* 강한 효과 (Intensity 3) */
+.btn-3d-intensity-3 {
+    --shadow-strength: 0.4;
+    --transform-scale: 1.08;
+    --hover-lift: 4px;
+    --active-press: 2px;
+    --glow-strength: 0.8;
+}
+
+.btn-3d-intensity-3:hover {
+    transform: perspective(1000px) rotateX(-6deg) translateY(-4px) scale(1.08) !important;
+}
+
+.btn-3d-intensity-3:active {
+    transform: perspective(1000px) rotateX(3deg) translateY(2px) scale(0.92) !important;
+}
+
+/* ====================
+   우선순위별 추가 효과
+   ==================== */
+
+/* 높은 우선순위 버튼 (CTA 등) */
+.btn-3d-priority-high {
+    --priority-boost: 1.5;
+    filter: brightness(1.05) !important;
+}
+
+.btn-3d-priority-high:hover {
+    filter: brightness(1.1) contrast(1.05) !important;
+}
+
+.btn-3d-priority-high:active {
+    filter: brightness(0.95) !important;
+}
+
+/* 중간 우선순위 버튼 */
+.btn-3d-priority-medium {
+    --priority-boost: 1.2;
+    filter: brightness(1.02) !important;
+}
+
+.btn-3d-priority-medium:hover {
+    filter: brightness(1.05) !important;
+}
+
+/* ====================
+   반응형 및 접근성
+   ==================== */
+
+/* 모바일 디바이스에서는 효과 감소 */
+@media (max-width: 768px) {
+    .btn-3d-enhanced {
+        --shadow-strength: calc(var(--shadow-strength, 0.25) * 0.7);
+        --hover-lift: calc(var(--hover-lift, 2px) * 0.5);
+    }
+    
+    .btn-3d-intensity-3:hover {
+        transform: perspective(1000px) rotateX(-3deg) translateY(-2px) scale(1.03) !important;
+    }
+}
+
+/* 터치 디바이스 최적화 */
+@media (hover: none) {
+    .btn-3d-enhanced:hover {
+        transform: none !important;
+    }
+    
+    .btn-3d-enhanced:active {
+        transform: perspective(1000px) scale(0.95) !important;
+    }
+}
+
+/* 애니메이션 비활성화 설정 존중 */
+@media (prefers-reduced-motion: reduce) {
+    .btn-3d-enhanced,
+    .btn-3d-enhanced:hover,
+    .btn-3d-enhanced:active {
+        transition: none !important;
+        transform: none !important;
+        animation: none !important;
+    }
+}
+
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+    .btn-3d-enhanced {
+        --shadow-strength: calc(var(--shadow-strength, 0.25) * 1.5);
+        border: 2px solid currentColor !important;
+    }
+}
+
+/* ====================
+   성능 최적화
+   ==================== */
+
+/* GPU 가속 활성화 */
+.btn-3d-enhanced {
+    will-change: transform, filter, box-shadow !important;
+}
+
+/* 뷰포트 밖에서는 애니메이션 최소화 */
+.btn-3d-enhanced:not(.btn-3d-visible) {
+    will-change: auto !important;
+}
+
+.btn-3d-enhanced.btn-3d-visible {
+    will-change: transform, filter, box-shadow !important;
+}
+
+/* ====================
+   기본 그림자 시스템
+   ==================== */
+
+/* 기본 그림자 (모든 스타일에서 공통으로 사용) */
+.btn-3d-enhanced {
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.3)),
+        0 1px 2px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.2)),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset !important;
+}
+
+.btn-3d-enhanced:hover {
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.4)),
+        0 2px 4px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.3)),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset !important;
+}
+
+.btn-3d-enhanced:active {
+    box-shadow: 
+        0 1px 2px rgba(0, 0, 0, calc(var(--shadow-strength, 0.25) * 0.5)),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset !important;
+}
+
+/* ====================
+   동적 중요도 시스템
+   ==================== */
+
+/* CSS 변수를 통한 동적 효과 조정 */
+.btn-3d-enhanced {
+    --importance: var(--btn-3d-importance, 50);
+    --intensity: var(--btn-3d-intensity, 2);
+    
+    /* 중요도에 따른 동적 그림자 강화 */
+    box-shadow: 
+        0 calc(var(--importance) * 0.05px) calc(var(--importance) * 0.1px) 
+        rgba(0, 0, 0, calc(0.1 + var(--importance) * 0.003)),
+        
+        0 calc(var(--importance) * 0.02px) calc(var(--importance) * 0.04px) 
+        rgba(0, 0, 0, calc(0.05 + var(--importance) * 0.002)),
+        
+        0 0 0 1px rgba(255, 255, 255, calc(0.03 + var(--importance) * 0.001)) inset !important;
+}
+
+/* ====================
+   특수 상태 처리
+   ==================== */
+
+/* 비활성화된 버튼 */
+.btn-3d-enhanced:disabled,
+.btn-3d-enhanced[disabled] {
+    transform: none !important;
+    box-shadow: none !important;
+    filter: grayscale(0.7) opacity(0.6) !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+}
+
+/* 로딩 상태 */
+.btn-3d-enhanced[aria-busy="true"] {
+    pointer-events: none !important;
+    position: relative !important;
+}
+
+.btn-3d-enhanced[aria-busy="true"]::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 16px !important;
+    height: 16px !important;
+    margin: -8px 0 0 -8px !important;
+    border: 2px solid transparent !important;
+    border-top-color: currentColor !important;
+    border-radius: 50% !important;
+    animation: btn-3d-spin 1s linear infinite !important;
+}
+
+@keyframes btn-3d-spin {
+    to {
+        transform: rotate(360deg) !important;
+    }
+}
+
+/* ====================
+   다크모드 지원
+   ==================== */
+
+/* 다크모드 감지 */
+@media (prefers-color-scheme: dark) {
+    .btn-3d-enhanced {
+        --shadow-strength: calc(var(--shadow-strength, 0.25) * 1.3);
+    }
+    
+    .btn-3d-enhanced {
+        box-shadow: 
+            0 2px 4px rgba(0, 0, 0, calc(var(--shadow-strength) * 0.6)),
+            0 1px 2px rgba(0, 0, 0, calc(var(--shadow-strength) * 0.4)),
+            0 0 0 1px rgba(255, 255, 255, 0.1) inset !important;
+    }
+}
+
+/* 사이트별 다크모드 클래스 지원 */
+.dark .btn-3d-enhanced,
+[data-theme="dark"] .btn-3d-enhanced,
+.theme-dark .btn-3d-enhanced {
+    --shadow-strength: calc(var(--shadow-strength, 0.25) * 1.3);
+    
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, calc(var(--shadow-strength) * 0.6)),
+        0 1px 2px rgba(0, 0, 0, calc(var(--shadow-strength) * 0.4)),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset !important;
+}
